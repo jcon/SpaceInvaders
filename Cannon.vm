@@ -1,0 +1,322 @@
+function Cannon.init 0
+push constant 130
+pop static 0
+push constant 132
+pop static 1
+call Constants.getEND_Y 0
+push constant 2
+push constant 16
+call Math.multiply 2
+sub
+pop static 2
+push constant 0
+pop static 3
+push constant 1
+pop static 4
+push constant 2
+pop static 5
+push constant 129
+neg
+push constant 449
+neg
+push constant 449
+neg
+push constant 8189
+neg
+push constant 16383
+neg
+push constant 16383
+neg
+push constant 16383
+neg
+push constant 16383
+neg
+call Sprites.createSprite 8
+pop static 6
+push constant 2
+call Array.new 1
+pop static 7
+push constant 0
+push static 7
+add
+push constant 65
+neg
+push constant 2049
+neg
+push constant 1345
+neg
+push constant 73
+neg
+push constant 3457
+neg
+push constant 5523
+neg
+push constant 10233
+neg
+push constant 20483
+call Sprites.createSprite 8
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push static 7
+add
+push constant 8201
+neg
+push constant 26558
+push constant 777
+neg
+push constant 16449
+neg
+push constant 29485
+push constant 9093
+neg
+push constant 4089
+neg
+push constant 20461
+neg
+call Sprites.createSprite 8
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+return
+function Cannon.getSprite 0
+push static 6
+return
+function Cannon.new 0
+push constant 4
+call Memory.alloc 1
+pop pointer 0
+call Constants.getSTART_X 0
+call Constants.getEND_X 0
+call Constants.getSTART_X 0
+sub
+push constant 2
+call Math.divide 2
+add
+push constant 8
+sub
+pop this 0
+push static 3
+pop this 1
+push pointer 0
+return
+function Cannon.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Cannon.draw 0
+push argument 0
+pop pointer 0
+push this 1
+push static 3
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push static 6
+push this 0
+push static 2
+call Sprites.drawSprite 3
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push this 1
+push static 5
+eq
+not
+push this 3
+push constant 120
+gt
+and
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push static 3
+pop this 1
+push this 0
+push static 2
+call Sprites.clearXY 2
+pop temp 0
+goto IF_END1
+label IF_FALSE1
+push this 2
+push static 7
+add
+pop pointer 1
+push that 0
+push this 0
+push static 2
+call Sprites.drawSprite 3
+pop temp 0
+push this 2
+push constant 1
+add
+push constant 2
+call Util.mod 2
+pop this 2
+push this 3
+push constant 1
+add
+pop this 3
+label IF_END1
+label IF_END0
+push constant 0
+return
+function Cannon.isAlive 0
+push argument 0
+pop pointer 0
+push this 1
+push static 3
+eq
+return
+function Cannon.isDead 0
+push argument 0
+pop pointer 0
+push this 1
+push static 5
+eq
+return
+function Cannon.setCollision 0
+push argument 0
+pop pointer 0
+push static 4
+pop this 1
+push constant 0
+pop this 3
+push constant 0
+return
+function Cannon.setDead 0
+push argument 0
+pop pointer 0
+push static 5
+pop this 1
+push constant 0
+return
+function Cannon.getX 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Cannon.handleKeyPress 1
+push argument 0
+pop pointer 0
+push this 1
+push static 3
+eq
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+call Keyboard.keyPressed 0
+pop local 0
+push local 0
+push static 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push pointer 0
+call Cannon.handleKeyLeft 1
+pop temp 0
+goto IF_END1
+label IF_FALSE1
+push local 0
+push static 1
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push pointer 0
+call Cannon.handleKeyRight 1
+pop temp 0
+label IF_FALSE2
+label IF_END1
+push constant 0
+return
+function Cannon.handleKeyLeft 0
+push argument 0
+pop pointer 0
+push this 0
+call Constants.getSTART_X 0
+eq
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 0
+push constant 1
+sub
+pop this 0
+push static 6
+push this 0
+push static 2
+call Sprites.drawSprite 3
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 0
+push constant 16
+add
+push static 2
+push this 0
+push constant 17
+add
+push static 2
+push constant 8
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE0
+push constant 0
+return
+function Cannon.handleKeyRight 0
+push argument 0
+pop pointer 0
+push this 0
+call Constants.getEND_X 0
+push constant 16
+sub
+eq
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 0
+push constant 1
+add
+pop this 0
+push static 6
+push this 0
+push static 2
+call Sprites.drawSprite 3
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 0
+push constant 1
+sub
+push static 2
+push this 0
+push static 2
+push constant 8
+add
+call Screen.drawLine 4
+pop temp 0
+label IF_FALSE0
+push constant 0
+return

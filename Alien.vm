@@ -1,0 +1,343 @@
+function Alien.init 3
+push constant 0
+pop static 0
+push constant 1
+pop static 1
+push constant 2
+pop static 2
+push constant 6000
+pop local 2
+push constant 2
+call Array.new 1
+pop static 3
+push constant 0
+push static 3
+add
+push constant 961
+neg
+push constant 8185
+neg
+push constant 16381
+neg
+push constant 14749
+neg
+push constant 16381
+neg
+push constant 1633
+neg
+push constant 3505
+neg
+push constant 12301
+neg
+call Sprites.createSprite 8
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push static 3
+add
+push constant 961
+neg
+push constant 8185
+neg
+push constant 16381
+neg
+push constant 14749
+neg
+push constant 16381
+neg
+push constant 3697
+neg
+push constant 6553
+neg
+push constant 3121
+neg
+call Sprites.createSprite 8
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+call Array.new 1
+pop static 4
+push constant 0
+push static 4
+add
+push constant 1057
+neg
+push constant 4677
+neg
+push constant 6133
+neg
+push constant 7645
+neg
+push constant 8189
+neg
+push constant 4089
+neg
+push constant 1041
+neg
+push constant 2057
+neg
+call Sprites.createSprite 8
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push static 4
+add
+push constant 1041
+neg
+push constant 545
+neg
+push constant 2033
+neg
+push constant 3545
+neg
+push constant 8189
+neg
+push constant 6133
+neg
+push constant 5141
+neg
+push constant 4965
+neg
+call Sprites.createSprite 8
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+call Array.new 1
+pop static 5
+push constant 0
+push static 5
+add
+push constant 385
+neg
+push constant 961
+neg
+push constant 2017
+neg
+push constant 3505
+neg
+push constant 4081
+neg
+push constant 577
+neg
+push constant 1441
+neg
+push constant 2641
+neg
+call Sprites.createSprite 8
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push static 5
+add
+push constant 385
+neg
+push constant 961
+neg
+push constant 2017
+neg
+push constant 3505
+neg
+push constant 4081
+neg
+push constant 1441
+neg
+push constant 2065
+neg
+push constant 1057
+neg
+call Sprites.createSprite 8
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 545
+neg
+push constant 4421
+neg
+push constant 2057
+neg
+push constant 1041
+neg
+push constant 12295
+neg
+push constant 1041
+neg
+push constant 2377
+neg
+push constant 4645
+neg
+call Sprites.createSprite 8
+pop static 6
+push constant 0
+return
+function Alien.new 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 1
+push constant 0
+not
+pop this 0
+push pointer 0
+return
+function Alien.getOCTOPUS 0
+push static 0
+return
+function Alien.getCRAB 0
+push static 1
+return
+function Alien.getSQUID 0
+push static 2
+return
+function Alien.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Alien.drawXY 2
+push argument 0
+pop pointer 0
+push this 0
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 1
+push argument 2
+call Sprites.clearXY 2
+pop temp 0
+push constant 0
+return
+label IF_FALSE0
+push constant 0
+pop local 1
+push argument 3
+not
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 1
+pop local 1
+label IF_FALSE1
+push this 1
+push static 0
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push local 1
+push static 3
+add
+pop pointer 1
+push that 0
+pop local 0
+goto IF_END2
+label IF_FALSE2
+push this 1
+push static 1
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push local 1
+push static 4
+add
+pop pointer 1
+push that 0
+pop local 0
+goto IF_END3
+label IF_FALSE3
+push this 1
+push static 2
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push local 1
+push static 5
+add
+pop pointer 1
+push that 0
+pop local 0
+label IF_FALSE4
+label IF_END3
+label IF_END2
+push local 0
+push argument 1
+push argument 2
+call Sprites.drawSprite 3
+pop temp 0
+push constant 0
+return
+function Alien.drawExplosionXY 0
+push argument 0
+pop pointer 0
+push static 6
+push argument 1
+push argument 2
+call Sprites.drawSprite 3
+pop temp 0
+push constant 0
+return
+function Alien.setAlive 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 0
+push constant 0
+return
+function Alien.getIsAlive 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Alien.getHitPoints 0
+push argument 0
+pop pointer 0
+push this 1
+push static 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 10
+return
+goto IF_END0
+label IF_FALSE0
+push this 1
+push static 1
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 20
+return
+goto IF_END1
+label IF_FALSE1
+push this 1
+push static 2
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 30
+return
+label IF_FALSE2
+label IF_END1
+label IF_END0
+push constant 0
+return

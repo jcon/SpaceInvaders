@@ -1,0 +1,49 @@
+function Constants.init 0
+push constant 0
+pop static 0
+push constant 224
+pop static 1
+push constant 0
+return
+function Constants.getSTART_X 0
+push static 0
+return
+function Constants.getEND_X 0
+push static 0
+push static 1
+add
+return
+function Constants.getSTART_Y 0
+push constant 0
+return
+function Constants.getEND_Y 0
+push constant 255
+return
+function Constants.getWIDTH 0
+push static 1
+return
+function Constants.getPLAYER_Y 0
+call Constants.getEND_Y 0
+push constant 32
+sub
+return
+function Constants.getEARTH_Y 0
+call Constants.getEND_Y 0
+push constant 16
+sub
+return
+function Constants.getBOARD_START_Y 0
+call Constants.getSTART_Y 0
+push constant 11
+push constant 4
+call Math.multiply 2
+add
+return
+function Constants.getSCORE_X 0
+push constant 1
+return
+function Constants.getSHIELD_Y 0
+call Constants.getEND_Y 0
+push constant 56
+sub
+return

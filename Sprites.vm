@@ -1,0 +1,683 @@
+function Sprites.init 1
+push constant 17
+call Array.new 1
+pop static 0
+push constant 17
+call Array.new 1
+pop static 1
+push constant 0
+push static 1
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push static 1
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+push static 0
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push static 0
+add
+push constant 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 16
+lt
+not
+if-goto WHILE_END0
+push local 0
+push static 0
+add
+push local 0
+push constant 1
+sub
+push static 0
+add
+pop pointer 1
+push that 0
+push constant 2
+call Math.multiply 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push static 1
+add
+push local 0
+push static 0
+add
+pop pointer 1
+push that 0
+push constant 1
+sub
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+not
+push constant 0
+not
+push constant 0
+not
+push constant 0
+not
+push constant 0
+not
+push constant 0
+not
+push constant 0
+not
+push constant 0
+not
+call Sprites.createSprite 8
+pop static 2
+push constant 0
+return
+function Sprites.createSprite 1
+push constant 16
+call Array.new 1
+pop local 0
+push constant 0
+push local 0
+add
+push argument 0
+not
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push local 0
+add
+push argument 1
+not
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push local 0
+add
+push argument 2
+not
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push local 0
+add
+push argument 3
+not
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 4
+push local 0
+add
+push argument 4
+not
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 5
+push local 0
+add
+push argument 5
+not
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 6
+push local 0
+add
+push argument 6
+not
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 7
+push local 0
+add
+push argument 7
+not
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+return
+function Sprites.xor 0
+push argument 0
+push argument 1
+not
+and
+push argument 0
+not
+push argument 1
+and
+or
+return
+function Sprites.drawSpriteXOR 11
+push argument 1
+push constant 511
+gt
+push argument 2
+or
+push constant 255
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+label IF_FALSE0
+push constant 0
+pop local 8
+push constant 16384
+push constant 32
+push argument 2
+call Math.multiply 2
+add
+push argument 1
+push constant 16
+call Math.divide 2
+add
+pop local 0
+push argument 1
+push constant 16
+call Util.mod 2
+pop local 6
+push constant 16
+push local 6
+sub
+pop local 7
+push local 6
+push static 1
+add
+pop pointer 1
+push that 0
+pop local 5
+push local 5
+not
+pop local 4
+push constant 0
+pop local 3
+label WHILE_EXP0
+push local 3
+push constant 8
+lt
+not
+if-goto WHILE_END0
+push local 0
+push local 3
+push constant 32
+call Math.multiply 2
+add
+pop local 1
+push local 6
+push constant 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 1
+call Memory.peek 1
+not
+pop local 2
+push local 2
+push local 3
+push argument 0
+add
+pop pointer 1
+push that 0
+call Sprites.xor 2
+pop local 10
+push local 8
+push local 2
+push local 3
+push argument 0
+add
+pop pointer 1
+push that 0
+or
+push local 10
+eq
+not
+or
+pop local 8
+push local 1
+push local 10
+not
+call Memory.poke 2
+pop temp 0
+goto IF_END1
+label IF_FALSE1
+push local 1
+call Memory.peek 1
+not
+pop local 2
+push local 3
+push argument 0
+add
+pop pointer 1
+push that 0
+push local 6
+call Sprites.shiftLeft 2
+push local 4
+and
+pop local 9
+push local 2
+push local 9
+call Sprites.xor 2
+pop local 10
+push local 8
+push local 2
+push local 9
+or
+push local 10
+eq
+not
+or
+pop local 8
+push local 1
+push local 10
+not
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 1
+add
+call Memory.peek 1
+not
+pop local 2
+push local 3
+push argument 0
+add
+pop pointer 1
+push that 0
+push local 7
+call Sprites.shiftRight 2
+push local 5
+and
+pop local 9
+push local 2
+push local 9
+call Sprites.xor 2
+pop local 10
+push local 8
+push local 2
+push local 9
+or
+push local 10
+eq
+not
+or
+pop local 8
+push local 1
+push constant 1
+add
+push local 10
+not
+call Memory.poke 2
+pop temp 0
+label IF_END1
+push local 3
+push constant 1
+add
+pop local 3
+goto WHILE_EXP0
+label WHILE_END0
+push local 8
+return
+function Sprites.drawSprite 8
+push argument 1
+push constant 511
+gt
+push argument 2
+or
+push constant 255
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+label IF_FALSE0
+push constant 16384
+push constant 32
+push argument 2
+call Math.multiply 2
+add
+push argument 1
+push constant 16
+call Math.divide 2
+add
+pop local 0
+push argument 1
+push constant 16
+call Util.mod 2
+pop local 6
+push constant 16
+push local 6
+sub
+pop local 7
+push local 6
+push static 1
+add
+pop pointer 1
+push that 0
+pop local 5
+push local 5
+not
+pop local 4
+push constant 0
+pop local 3
+label WHILE_EXP0
+push local 3
+push constant 8
+lt
+not
+if-goto WHILE_END0
+push local 6
+push constant 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+push local 3
+push constant 32
+call Math.multiply 2
+add
+push local 3
+push argument 0
+add
+pop pointer 1
+push that 0
+not
+call Memory.poke 2
+pop temp 0
+goto IF_END1
+label IF_FALSE1
+push local 0
+push local 3
+push constant 32
+call Math.multiply 2
+add
+pop local 1
+push local 1
+call Memory.peek 1
+not
+pop local 2
+push local 1
+push local 2
+push local 5
+and
+push local 3
+push argument 0
+add
+pop pointer 1
+push that 0
+push local 6
+call Sprites.shiftLeft 2
+push local 4
+and
+or
+not
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 1
+add
+call Memory.peek 1
+not
+pop local 2
+push local 1
+push constant 1
+add
+push local 3
+push argument 0
+add
+pop pointer 1
+push that 0
+push local 7
+call Sprites.shiftRight 2
+push local 5
+and
+push local 2
+push local 4
+and
+or
+not
+call Memory.poke 2
+pop temp 0
+label IF_END1
+push local 3
+push constant 1
+add
+pop local 3
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Sprites.eraseSprite 10
+push argument 1
+push constant 511
+gt
+push argument 2
+or
+push constant 255
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+label IF_FALSE0
+push constant 16384
+push constant 32
+push argument 2
+call Math.multiply 2
+add
+push argument 1
+push constant 16
+call Math.divide 2
+add
+pop local 0
+push argument 1
+push constant 16
+call Util.mod 2
+pop local 6
+push constant 16
+push local 6
+sub
+pop local 7
+push local 6
+push static 1
+add
+pop pointer 1
+push that 0
+pop local 5
+push local 5
+not
+pop local 4
+push constant 0
+pop local 3
+label WHILE_EXP0
+push local 3
+push constant 8
+lt
+not
+if-goto WHILE_END0
+push local 0
+push local 3
+push constant 32
+call Math.multiply 2
+add
+pop local 1
+push local 6
+push constant 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 1
+call Memory.peek 1
+not
+pop local 2
+push local 3
+push argument 0
+add
+pop pointer 1
+push that 0
+not
+pop local 8
+push local 1
+push local 2
+push local 8
+and
+not
+call Memory.poke 2
+pop temp 0
+goto IF_END1
+label IF_FALSE1
+push local 1
+call Memory.peek 1
+not
+pop local 2
+push local 3
+push argument 0
+add
+pop pointer 1
+push that 0
+push local 6
+call Sprites.shiftLeft 2
+not
+pop local 8
+push local 1
+push local 2
+push local 8
+and
+not
+call Memory.poke 2
+pop temp 0
+push local 1
+push constant 1
+add
+call Memory.peek 1
+not
+pop local 2
+push local 3
+push argument 0
+add
+pop pointer 1
+push that 0
+push local 7
+call Sprites.shiftRight 2
+not
+pop local 8
+push local 1
+push constant 1
+add
+push local 2
+push local 8
+and
+not
+call Memory.poke 2
+pop temp 0
+label IF_END1
+push local 3
+push constant 1
+add
+pop local 3
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Sprites.clearXY 0
+push static 2
+push argument 0
+push argument 1
+call Sprites.drawSprite 3
+pop temp 0
+push constant 0
+return
+function Sprites.shiftRight 0
+push argument 1
+push constant 15
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+goto IF_END0
+label IF_FALSE0
+push argument 0
+push argument 1
+push static 0
+add
+pop pointer 1
+push that 0
+call Math.divide 2
+return
+label IF_END0
+function Sprites.shiftLeft 1
+push argument 1
+push constant 15
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+goto IF_END0
+label IF_FALSE0
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push argument 1
+lt
+not
+if-goto WHILE_END0
+push argument 0
+push argument 0
+add
+pop argument 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push argument 0
+return
+label IF_END0
