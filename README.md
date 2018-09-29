@@ -9,5 +9,5 @@ A clone of the original arcade version of Space Invaders written in the Jack pro
 
 ![Game Play](space-invaders.png)
 
-![Longer Demo](https://www.youtube.com/watch?v=jKqC16h59aE)
+[Longer Demo on YouTube](https://www.youtube.com/watch?v=jKqC16h59aE)
 
